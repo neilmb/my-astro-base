@@ -11,4 +11,4 @@ db = SQLAlchemy(app)
 
 @app.route('/')
 def home():
-    return "I am alive using" + str(db)
+    return "I am alive using" + repr(db)
