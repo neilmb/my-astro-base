@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask
+from flask import Flask, escape
 from flask.ext.sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -11,4 +11,7 @@ db = SQLAlchemy(app)
 
 @app.route('/')
 def home():
-    return "I am alive using" + repr(db)
+    
+    app_str = escape(repr(app))
+    db_str = escape(repr(db))
+    return "App {} is alive using db {}.".format(app_str, db)
